@@ -13,7 +13,7 @@ class MyRobot(PyBulletRobot):
         super().__init__(
             sim,
             body_name="lite6",  # make sure this matches your URDF root link or robot name
-            file_name="urdf/lite6.urdf",  # path to your URDF file
+            file_name="urdf/urdf/lite6.urdf",  # path to your URDF file
             base_position=np.zeros(3),
             action_space=action_space,
             joint_indices=np.arange(6),  # joint indices 0 to 5

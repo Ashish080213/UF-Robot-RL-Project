@@ -28,7 +28,9 @@ for episode in range(1, episodes + 1):
     while not done:
         steps = steps +1
         action, _states = model.predict(state)
+        # print("Actions: ", action)
         state, reward, done, info = env.step(action)
+        # print("States: ",state)
         score += reward
         env.render()
         time.sleep(0.2)

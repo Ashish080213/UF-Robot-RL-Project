@@ -12,7 +12,7 @@ from panda_gym.pybullet import PyBullet
 current_dir = os.path.dirname(os.path.abspath(__file__))
 
 # Construct absolute path to urdf file relative to current_dir
-urdf_path = os.path.normpath(os.path.join(current_dir, '..', '..', 'urdf', 'lite6.urdf'))
+urdf_path = os.path.normpath(os.path.join(current_dir, '..', '..', 'urdf', 'urdf', 'lite6.urdf'))
 
 # Use this urdf_path when loading the robot
 
@@ -53,7 +53,7 @@ class Lite6(PyBulletRobot):
         )
         nuetual_gripper_jnt = 0.43
         self.fingers_indices = np.array([8, 11])
-        self.neutral_joint_values = np.array([0.0, -1.103210210442149, -0.5245520784266224, 0.0, 1.62760333106346, 0.0, nuetual_gripper_jnt, nuetual_gripper_jnt, nuetual_gripper_jnt, nuetual_gripper_jnt, nuetual_gripper_jnt, nuetual_gripper_jnt])  if not self.block_gripper else np.array([0.0, -1.103210210442149, -0.5245520784266224, 0.0, 1.62760333106346, 0.0])
+        self.neutral_joint_values = np.array([0.0, -1.103210210442149, -0.5245520784266224, 0.0, 1.62760333106346, 0.0, nuetual_gripper_jnt, nuetual_gripper_jnt, nuetual_gripper_jnt, nuetual_gripper_jnt, nuetual_gripper_jnt, nuetual_gripper_jnt])  if not self.block_gripper else np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.0]) # Changed this to get correct Lite6 joint configurations; Original - np.array([0.0, -1.103210210442149, -0.5245520784266224, 0.0, 1.62760333106346, 0.0])
         self.ee_link = 14 if not self.block_gripper else 6
         self.sim.set_lateral_friction(self.body_name, self.fingers_indices[0], lateral_friction=1.0)
         self.sim.set_lateral_friction(self.body_name, self.fingers_indices[1], lateral_friction=1.0)

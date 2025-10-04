@@ -27,7 +27,7 @@ hyperparameters = OrderedDict([
 model = DDPG(**hyperparameters, env=env, verbose=1, tensorboard_log='logs/ddpg-Lite6Reach-v1')
 
 try:
-    model.learn(500) # try learning for 500K steps
+    model.learn(500_000) # try learning for 500K steps
 except KeyboardInterrupt:
         print("KeyboardInterrupt detected!")
         pass

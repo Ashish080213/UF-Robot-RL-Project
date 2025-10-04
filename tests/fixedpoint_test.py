@@ -16,10 +16,11 @@ sim.physics_client.resetDebugVisualizerCamera(
 
 robot = MyRobot(sim)
 
+angle = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 
 # Run simulation and move joint
 for i in range(1000):
-    angle = np.sin(i * 0.01) * np.ones(6)  # 6 joint targets
+      # 6 joint targets
     robot.set_action(angle)
     sim.step()
-    time.sleep(0.01)
+    time.sleep(1)
