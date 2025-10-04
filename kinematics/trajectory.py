@@ -2,7 +2,9 @@ from xarm.wrapper import XArmAPI
 import time
 from rl.test_lite6_reach import start_sim
 import numpy as np
+from detection.call import Call
 
+Call()
 joint_traj, ee_pose = start_sim()
 
 # === Connect to xArm ===
@@ -35,7 +37,15 @@ speed=5 # speed in UF studio set to 50%
 for i in range(len(joint_traj)-1):
     traj = np.delete(joint_traj[i], 0)
     traj = np.append(traj, 0)
-    traj = traj + [0, -45, 45, 0, 90, 0]
+    # traj = traj + [0, -45, 45, 0, 90, 0] # previous URDF initial pose offset
+    
+    # updated URDF initial pose offset
+    traj[0] = traj[0] + 90
+    traj[1] = traj[1] + 26.4
+    traj[2] = traj[2] + 116.9
+    traj[3] = traj[3] + 1
+    traj[4] = traj[4] + 83.5
+    traj[5] = 180
     print("***************************")
     print("Traj: ", traj)
     arm.set_servo_angle(angle=traj, speed=speed, wait=True)

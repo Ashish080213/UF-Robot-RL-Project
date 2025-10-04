@@ -5,6 +5,8 @@ import numpy as np
 from panda_gym.envs.core import Task
 from panda_gym.utils import distance
 
+import os
+import yaml
 
 class Reach(Task):
     def __init__(
@@ -63,9 +65,24 @@ class Reach(Task):
         # noise = np.array([0.05, 0.05, -0.4])
         
         # V-2 Single Target Model Testing Point
-        noise = np.array([0.1, 0.03, -0.4])
+        # noise = np.array([0.1, 0.03, -0.4])
         
-        goal = ee_pos + noise
+        # V-2 Single Target Model Hardware Testing Point
+        yaml_file_path = 'detection/yaml/coordinates.yaml'
+
+        # Read the existing x, y, z coordinates from the YAML file
+        if os.path.exists(yaml_file_path):
+            with open(yaml_file_path, 'r') as file:
+                pose_dict = yaml.safe_load(file)
+        else:
+            raise FileNotFoundError(f"YAML file {yaml_file_path} not found")
+
+        target = np.array([pose_dict['x'], pose_dict['y'], pose_dict['z']])
+        noise = np.array([pose_dict['y'], -pose_dict['x'], pose_dict['z']]) # this change because hardware is -90 degrees off in joint1
+        
+        goal = (noise/1000) + np.array([-0.5, 0, 0]) # converting to m, and adding x=-0.5 offset which is in sim.
+        print("Goal Point: ", target)
+        # goal = ee_pos + noise # commented to run hardware logic
         
         # print("EE POSE", ee_pos)
         

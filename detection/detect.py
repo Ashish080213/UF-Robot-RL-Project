@@ -54,6 +54,7 @@ def start_detection():
     arm.set_mode(0)
     arm.set_state(0)
     home = [83.4, 3.4, 409.7, 179.2, 0.0, 0.9]
+    # home = [-156.2, 283.4, 447.4, 176.9, 5.9, -85.7] # for testing
     # rdet = [-118, -87, -152] # No where used in code
     arm.set_position(x=home[0], y=home[1], z=home[2],
                     roll=home[3], pitch=home[4], yaw=home[5],
@@ -263,7 +264,8 @@ def start_detection():
                 arm.motion_enable(True)
                 arm.set_mode(0)
                 arm.set_state(0)
-                home = [-156.2, 283.4, 447.4, 176.9, 5.9, -85.7] # Not Working due to orientation issue -> Updated [Added offset to orientation in below code]
+                # home = [-156.2, 283.4, 447.4, 176.9, 5.9, -85.7] # Not Working due to orientation issue -> Updated [Added offset to orientation in below code]
+                home = [-6.0, 322.5, 448, 179.7, 6.7, -89.1] # for testing in 90 degrees offset in Joint1
                 # home = [-200, 246, 456, 180, 0, 180] # Jenson Coordinates
                 drop = [320.7, 23, 13.1, 178.6, -1.6, 96.7]
                 arm.set_position(x=home[0], y=home[1], z=home[2],

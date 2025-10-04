@@ -27,7 +27,7 @@ def start_sim():
     traj_list = []
     ee_pose_list = []
 
-    for episode in range(1, 50): 
+    for episode in range(1, episodes+1): 
         state = env.reset()
         done = False
         score = 0
