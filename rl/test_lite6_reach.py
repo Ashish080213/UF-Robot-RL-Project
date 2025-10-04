@@ -16,7 +16,8 @@ def start_sim():
     env = DummyVecEnv([lambda : env])
 
     # Load model For Lite6:
-    model = DDPG.load("./model/ddpg-Lite6Reach-v1.pkl", device="cuda:0", env=env) # DDPG + HER
+    model = DDPG.load("./model/single_point/ddpg-Lite6Reach-v2.pkl", device="cuda:0", env=env) # DDPG + HER ---> Multi Point Model
+    # model = DDPG.load("./model/single_point/ddpg-Lite6Reach-v2.pkl", device="cuda:0", env=env) # DDPG + HER ---> Single Point Model
 
     # test for 50 episodes:
     # episodes = 50
@@ -24,8 +25,9 @@ def start_sim():
     sum_score = 0.0
 
     traj_list = []
+    ee_pose_list = []
 
-    for episode in range(1, episodes + 1): 
+    for episode in range(1, 50): 
         state = env.reset()
         done = False
         score = 0
@@ -40,11 +42,23 @@ def start_sim():
             
             env.render()
             joint_angles = [env.envs[0].unwrapped.robot.get_joint_angle(i) for i in range(6)]
-            print(f"Step {steps}: Joint Angles (rad): {joint_angles}")
+            print("***************************")
+            print(f"Step {steps}:")
+            print(f"  Joint Angles (rad): {joint_angles}")
+            
+            # Get TCP (end-effector) pose: position and orientation
+            tcp_position = env.envs[0].unwrapped.robot.get_link_position(6)
+            tcp_position[0] += 0.5
+
+            # Print everything
+            print(f"  TCP Position (x, y, z): {tcp_position}")
             
             traj_list.append(joint_angles)
+            ee_pose_list.append(tcp_position)
         
             time.sleep(0.2)
+        
+        print("***************************")
         print("Episode : {}, Score : {}".format(episode, score))
         sum_score = sum_score + score
 
@@ -52,4 +66,4 @@ def start_sim():
 
     env.close()
     
-    return traj_list
+    return traj_list, ee_pose_list

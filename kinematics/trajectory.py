@@ -3,7 +3,7 @@ import time
 from rl.test_lite6_reach import start_sim
 import numpy as np
 
-joint_traj = start_sim()
+joint_traj, ee_pose = start_sim()
 
 # === Connect to xArm ===
 arm = XArmAPI('192.168.1.171')  # xArm IP
@@ -28,17 +28,23 @@ arm.set_state(0)  # Set to ready state
 # target_joints = [0, -45, 45, 0, 90, 0]
 
 joint_traj = np.rad2deg(joint_traj)
-print(joint_traj)
+# print(joint_traj)
 
 # === Send joint command ===
-speed=5
+speed=5 # speed in UF studio set to 50%
 for i in range(len(joint_traj)-1):
     traj = np.delete(joint_traj[i], 0)
     traj = np.append(traj, 0)
     traj = traj + [0, -45, 45, 0, 90, 0]
-    print(traj)
+    print("***************************")
+    print("Traj: ", traj)
     arm.set_servo_angle(angle=traj, speed=speed, wait=True)
-    print(arm.get_servo_angle(), arm.get_servo_angle(is_radian=False))
+    # print(arm.get_servo_angle(), arm.get_servo_angle(is_radian=False))
+
+print("***************************")
+print("Sim EndEffector_Pose in mm: ", 1000*(ee_pose[len(ee_pose)-2]))
+print("Robot EndEffector_Pose in mm", (arm.get_position())[1][:3])
+print("***************************")
 
 # === Done ===
 print("Joint angles set successfully!")

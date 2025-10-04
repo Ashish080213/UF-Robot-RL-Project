@@ -32,6 +32,7 @@ except KeyboardInterrupt:
         print("KeyboardInterrupt detected!")
         pass
 # save the model after finish or interrupted by Ctrl-C
-model.save('./model/ddpg-Lite6Reach-v1.pkl')
+# model.save('./model/single_point/ddpg-Lite6Reach-v2.pkl') # Single Point
+model.save('./model/multi_point/ddpg-Lite6Reach-v2.pkl') # Multi Point
 
 env.close()

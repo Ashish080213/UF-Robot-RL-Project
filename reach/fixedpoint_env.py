@@ -55,7 +55,15 @@ class Reach(Task):
         ee_pos = np.array(self.get_ee_position())
 
         # Fixed goal close to EE — 3cm in each direction (X, Y), slightly above in Z
-        noise = np.array([0.2, -0.2, -0.4])
+        
+        # V-1 Single Target Model Trained Point
+        # noise = np.array([0.2, -0.2, -0.4])
+
+        # V-2 Single Target Model Trained Point
+        # noise = np.array([0.05, 0.05, -0.4])
+        
+        # V-2 Single Target Model Testing Point
+        noise = np.array([0.1, 0.03, -0.4])
         
         goal = ee_pos + noise
         
