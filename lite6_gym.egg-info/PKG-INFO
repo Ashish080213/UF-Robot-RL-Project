@@ -1,0 +1,6 @@
+Metadata-Version: 2.4
+Name: lite6_gym
+Version: 0.1
+Requires-Dist: gymnasium
+Requires-Dist: pybullet
+Dynamic: requires-dist
