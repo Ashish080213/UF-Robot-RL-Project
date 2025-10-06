@@ -16,8 +16,8 @@ def start_sim():
     env = DummyVecEnv([lambda : env])
 
     # Load model For Lite6:
-    model = DDPG.load("./model/single_point/ddpg-Lite6Reach-v2.pkl", device="cuda:0", env=env) # DDPG + HER ---> Multi Point Model
-    # model = DDPG.load("./model/single_point/ddpg-Lite6Reach-v2.pkl", device="cuda:0", env=env) # DDPG + HER ---> Single Point Model
+    # model = DDPG.load("./model/multi_point/ddpg-Lite6Reach-v2.pkl", device="cuda:0", env=env) # DDPG + HER ---> Multi Point Model
+    model = DDPG.load("./model/single_point/ddpg-Lite6Reach-v2.pkl", device="cuda:0", env=env) # DDPG + HER ---> Single Point Model
 
     # test for 50 episodes:
     # episodes = 50

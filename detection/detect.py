@@ -1,6 +1,6 @@
 # Author: Jenson
 # Modified: Ashish, Srini
-# Modified Date: 19-Sept-2025
+# Modified Date: 6-Oct-2025
 
 import cv2
 import numpy as np
@@ -53,7 +53,8 @@ def start_detection():
     arm.motion_enable(True)
     arm.set_mode(0)
     arm.set_state(0)
-    home = [83.4, 3.4, 409.7, 179.2, 0.0, 0.9]
+    # home = [83.4, 3.4, 409.7, 179.2, 0.0, 0.9] # actual home
+    home = [-6.0, 322.5, 448, 179.7, 6.7, -89.1] # for testing with 90 offset in joint1
     # home = [-156.2, 283.4, 447.4, 176.9, 5.9, -85.7] # for testing
     # rdet = [-118, -87, -152] # No where used in code
     arm.set_position(x=home[0], y=home[1], z=home[2],
@@ -294,10 +295,10 @@ def start_detection():
 
                     # Define crop region
                     effective_size = int(crop_size / view_params['zoom'])
-                    x1_crop = max(0, view_params['center_x'] - effective_size // 2)
+                    x1_crop = max(0, view_params['center_x'] - effective_size // 2) + 200
                     y1_crop = max(0, view_params['center_y'] - effective_size // 2)
-                    x2_crop = min(W, x1_crop + effective_size)
-                    y2_crop = min(H, y1_crop + effective_size)
+                    x2_crop = min(W, x1_crop + effective_size) - 200
+                    y2_crop = min(H, y1_crop + effective_size) - 100
 
                     color_crop = color_image[y1_crop:y2_crop, x1_crop:x2_crop]
                     depth_crop = depth_image[y1_crop:y2_crop, x1_crop:x2_crop]
