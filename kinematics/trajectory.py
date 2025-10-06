@@ -41,11 +41,11 @@ for i in range(len(joint_traj)-1):
     
     # updated URDF initial pose offset
     traj[0] = traj[0] + 90
-    traj[1] = traj[1] + 26.4
-    traj[2] = traj[2] + 116.9
-    traj[3] = traj[3] + 1
-    traj[4] = traj[4] + 83.5
-    traj[5] = 180
+    traj[1] = traj[1] - 45
+    traj[2] = traj[2] + 45
+    traj[3] = traj[3] + 0
+    traj[4] = traj[4] + 90
+    traj[5] = 0
     print("***************************")
     print("Traj: ", traj)
     arm.set_servo_angle(angle=traj, speed=speed, wait=True)

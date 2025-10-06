@@ -185,7 +185,7 @@
     </collision>
   </link>
   <joint name="joint2" type="revolute">
-    <origin rpy="1.5708 -2.0315632493 3.1416" xyz="0 0 0"/>
+    <origin rpy="1.5708 -0.7854 3.1416" xyz="0 0 0"/>
     <parent link="link1"/>
     <child link="link2"/>
     <axis xyz="0 0 1"/>
@@ -213,7 +213,7 @@
     </collision>
   </link>
   <joint name="joint3" type="revolute">
-    <origin rpy="-3.1416 0 -0.4694935688" xyz="0.2002 0 0"/>
+    <origin rpy="-3.1416 0 0.7854" xyz="0.2002 0 0"/>
     <parent link="link2"/>
     <child link="link3"/>
     <axis xyz="0 0 1"/>
@@ -241,7 +241,7 @@
     </collision>
   </link>
   <joint name="joint4" type="revolute">
-    <origin rpy="1.5708 -0.0174532925 0" xyz="0.087 -0.22761 0"/>
+    <origin rpy="1.5708 0 0" xyz="0.087 -0.22761 0"/>
     <parent link="link3"/>
     <child link="link4"/>
     <axis xyz="0 0 1"/>
@@ -269,7 +269,7 @@
     </collision>
   </link>
   <joint name="joint5" type="revolute">
-    <origin rpy="1.5708 -1.4573499254 0" xyz="0 0 0"/>
+    <origin rpy="1.5708 -1.5708 0" xyz="0 0 0"/>
     <parent link="link4"/>
     <child link="link5"/>
     <axis xyz="0 0 1"/>

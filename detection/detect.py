@@ -54,7 +54,8 @@ def start_detection():
     arm.set_mode(0)
     arm.set_state(0)
     # home = [83.4, 3.4, 409.7, 179.2, 0.0, 0.9] # actual home
-    home = [-6.0, 322.5, 448, 179.7, 6.7, -89.1] # for testing with 90 offset in joint1
+    # home = [-6.0, 322.5, 448, 179.7, 6.7, -89.1] # for testing with 90 offset in joint1
+    home = [-5.2, 85.5, 409.3, 179.0, 0.3, 90.9] # for testing multi point with 90 offset in joint1
     # home = [-156.2, 283.4, 447.4, 176.9, 5.9, -85.7] # for testing
     # rdet = [-118, -87, -152] # No where used in code
     arm.set_position(x=home[0], y=home[1], z=home[2],
@@ -266,7 +267,8 @@ def start_detection():
                 arm.set_mode(0)
                 arm.set_state(0)
                 # home = [-156.2, 283.4, 447.4, 176.9, 5.9, -85.7] # Not Working due to orientation issue -> Updated [Added offset to orientation in below code]
-                home = [-6.0, 322.5, 448, 179.7, 6.7, -89.1] # for testing in 90 degrees offset in Joint1
+                # home = [-6.0, 322.5, 448, 179.7, 6.7, -89.1] # for testing in 90 degrees offset in Joint1
+                home = [-5.2, 85.5, 409.3, 179.0, 0.3, 90.9] # for testing multi point with 90 offset in joint1
                 # home = [-200, 246, 456, 180, 0, 180] # Jenson Coordinates
                 drop = [320.7, 23, 13.1, 178.6, -1.6, 96.7]
                 arm.set_position(x=home[0], y=home[1], z=home[2],
@@ -295,10 +297,10 @@ def start_detection():
 
                     # Define crop region
                     effective_size = int(crop_size / view_params['zoom'])
-                    x1_crop = max(0, view_params['center_x'] - effective_size // 2) + 200
+                    x1_crop = max(0, view_params['center_x'] - effective_size // 2) - 100
                     y1_crop = max(0, view_params['center_y'] - effective_size // 2)
-                    x2_crop = min(W, x1_crop + effective_size) - 200
-                    y2_crop = min(H, y1_crop + effective_size) - 100
+                    x2_crop = min(W, x1_crop + effective_size) - 100
+                    y2_crop = min(H, y1_crop + effective_size) - 250
 
                     color_crop = color_image[y1_crop:y2_crop, x1_crop:x2_crop]
                     depth_crop = depth_image[y1_crop:y2_crop, x1_crop:x2_crop]

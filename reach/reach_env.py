@@ -56,11 +56,17 @@ class Reach(Task):
 
         # Sample goal close to EE — 3cm in each direction (X, Y), slightly above in Z
         
-        # V-2 Multi Target Model Trained Points
+        # V-3 Multi Target Model Trained Points
         noise = self.np_random.uniform(
-            low=np.array([0.02, -0.15, -0.42]),
-            high=np.array([0.12, 0.15, -0.40])
+            low=np.array([0.02, -0.05, -0.42]),
+            high=np.array([0.25, 0.20, -0.40])
         )
+        
+        # V-2 Multi Target Model Trained Points
+        # noise = self.np_random.uniform(
+        #     low=np.array([0.02, -0.15, -0.42]),
+        #     high=np.array([0.12, 0.15, -0.40])
+        # )
           
         # V-1 Multi Target Model Trained Points
         # noise = self.np_random.uniform(
