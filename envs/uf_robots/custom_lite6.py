@@ -31,7 +31,7 @@ class Lite6(PyBulletRobot):
     def __init__(
         self,
         sim: PyBullet,
-        block_gripper: bool = False,
+        block_gripper: bool = True,
         base_position: Optional[np.ndarray] = None,
         control_type: str = "ee",
     ) -> None:
