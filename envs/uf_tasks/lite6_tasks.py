@@ -7,8 +7,8 @@ from ..uf_robots.custom_lite6 import Lite6
 from panda_gym.envs.tasks.flip import Flip
 from panda_gym.envs.tasks.pick_and_place import PickAndPlace
 from panda_gym.envs.tasks.push import Push
-# from reach.reach_env import Reach
-from reach.fixedpoint_env import Reach
+from reach.reach_env import Reach
+# from reach.fixedpoint_env import Reach
 from panda_gym.envs.tasks.slide import Slide
 from panda_gym.envs.tasks.stack import Stack
 from panda_gym.pybullet import PyBullet

@@ -297,10 +297,10 @@ def start_detection():
 
                     # Define crop region
                     effective_size = int(crop_size / view_params['zoom'])
-                    x1_crop = max(0, view_params['center_x'] - effective_size // 2) - 100
-                    y1_crop = max(0, view_params['center_y'] - effective_size // 2)
-                    x2_crop = min(W, x1_crop + effective_size) - 100
-                    y2_crop = min(H, y1_crop + effective_size) - 250
+                    x1_crop = max(0, view_params['center_x'] - effective_size // 2) - 60
+                    y1_crop = max(0, view_params['center_y'] - effective_size // 2) + 10
+                    x2_crop = min(W, x1_crop + effective_size) - 175
+                    y2_crop = min(H, y1_crop + effective_size) - 400
 
                     color_crop = color_image[y1_crop:y2_crop, x1_crop:x2_crop]
                     depth_crop = depth_image[y1_crop:y2_crop, x1_crop:x2_crop]
