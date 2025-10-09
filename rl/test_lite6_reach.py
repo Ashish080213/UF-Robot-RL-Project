@@ -16,12 +16,12 @@ def start_sim():
     env = DummyVecEnv([lambda : env])
 
     # Load model For Lite6:
-    model = DDPG.load("./model/multi_point/ddpg-Lite6Reach-v4.pkl", device="cuda:0", env=env) # DDPG + HER ---> Multi Point Model
+    model = DDPG.load("./model/multi_point/ddpg-Lite6Reach-v5.pkl", device="cuda:0", env=env) # DDPG + HER ---> Multi Point Model
     # model = DDPG.load("./model/single_point/ddpg-Lite6Reach-v3.pkl", device="cuda:0", env=env) # DDPG + HER ---> Single Point Model
 
     # test for 50 episodes:
-    episodes = 50
-    # episodes = 1
+    # episodes = 50
+    episodes = 1
     sum_score = 0.0
 
     traj_list = []
@@ -67,3 +67,6 @@ def start_sim():
     env.close()
     
     return traj_list, ee_pose_list
+
+if __name__ == '__main__':
+    start_sim() # --> added this to run this file independently

@@ -24,7 +24,7 @@ def start_detection():
     clicked_pixel = None
     target_pos = None
     rot_target = None
-    selected_class_id = 1  # 👈 ADDED: default selected class
+    selected_class_id = 3  # 👈 ADDED: default selected class
     matching_objects = []
     current_selection_idx = 0
 

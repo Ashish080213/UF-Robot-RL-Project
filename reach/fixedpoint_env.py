@@ -82,6 +82,8 @@ class Reach(Task):
         
         goal = (noise/1000) + np.array([-0.5, 0, 0]) # converting to m, and adding x=-0.5 offset which is in sim.
         print("Goal Point: ", target)
+        # goal[2] = 0.115
+        goal[2] = 0.098
         # goal = ee_pos + noise # commented to run hardware logic
         
         # print("EE POSE", ee_pos)

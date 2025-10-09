@@ -92,7 +92,7 @@ class Lite6(PyBulletRobot):
         Returns:
             np.ndarray: Target arm angles, as the angles of the 6 arm joints.
         """
-        ee_displacement = ee_displacement[:3] * 0.05  # limit maximum change in position
+        ee_displacement = ee_displacement[:3] * 0.025  # limit maximum change in position
         # get the current position and the target position
         ee_position = self.get_ee_position()
         target_ee_position = ee_position + ee_displacement

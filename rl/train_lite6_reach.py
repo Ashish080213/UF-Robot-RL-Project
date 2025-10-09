@@ -27,12 +27,12 @@ hyperparameters = OrderedDict([
 model = DDPG(**hyperparameters, env=env, verbose=1, tensorboard_log='logs/ddpg-Lite6Reach-v1')
 
 try:
-    model.learn(3_000_000) # try learning for 500K steps
+    model.learn(500_000) # try learning for 500K steps
 except KeyboardInterrupt:
         print("KeyboardInterrupt detected!")
         pass
 # save the model after finish or interrupted by Ctrl-C
 # model.save('./model/single_point/ddpg-Lite6Reach-v3.pkl') # Single Point
-model.save('./model/multi_point/ddpg-Lite6Reach-v4.pkl') # Multi Point
+model.save('./model/multi_point/ddpg-Lite6Reach-v5.pkl') # Multi Point
 
 env.close()

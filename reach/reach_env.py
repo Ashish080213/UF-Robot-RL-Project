@@ -12,7 +12,7 @@ class Reach(Task):
         sim,
         get_ee_position,
         reward_type="sparse",
-        distance_threshold=0.05,
+        distance_threshold=0.01,
         goal_range=0.3,
     ) -> None:
         super().__init__(sim)
